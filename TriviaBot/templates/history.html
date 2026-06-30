@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+Quiz History
+</title>
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial;
+}
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,#1e293b,#020617);
+
+    color:white;
+
+    padding:40px;
+
+}
+
+
+
+.container{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+
+
+h1{
+
+    text-align:center;
+
+    color:#00ffc8;
+
+}
+
+
+
+.history-card{
+
+
+    background:#111827;
+
+    margin:20px 0;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 0 20px #000;
+
+
+}
+
+
+
+.question{
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.correct{
+
+    background:#16a34a;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin:10px 0;
+
+}
+
+
+
+.wrong{
+
+    background:#dc2626;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin:10px 0;
+
+}
+
+
+
+.back{
+
+
+display:block;
+
+text-align:center;
+
+background:#00ffc8;
+
+color:black;
+
+padding:15px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+margin-top:30px;
+
+
+}
+
+
+
+.empty{
+
+text-align:center;
+
+color:#aaa;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+📚 Previous Answers
+</h1>
+
+
+
+
+{% if records %}
+
+
+
+{% for r in records %}
+
+
+
+<div class="history-card">
+
+
+<div class="question">
+
+{{r.question | safe}}
+
+</div>
+
+
+
+<div class="correct">
+
+
+Correct Answer:
+
+{{r.correct | safe}}
+
+
+</div>
+
+
+
+
+{% if r.answer == r.correct %}
+
+
+
+<div class="correct">
+
+Your Answer:
+
+{{r.answer | safe}}
+
+✔ Correct
+
+</div>
+
+
+
+{% else %}
+
+
+
+<div class="wrong">
+
+
+Your Answer:
+
+{{r.answer | safe}}
+
+✘ Wrong
+
+
+</div>
+
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<div class="empty">
+
+No quiz attempts yet.
+
+</div>
+
+
+{% endif %}
+
+
+
+
+<a class="back" href="/quiz">
+
+Back To Quiz
+
+</a>
+
+
+
+</div>
+
+
+</body>
+
+</html>
