@@ -10,9 +10,19 @@ Trivia Bot
 <link rel="stylesheet"
 href="/static/style.css">
 
+<link rel="manifest" href="/static/manifest.json">
+
+<meta name="theme-color" content="#0f172a">
 
 </head>
 
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/static/sw.js")
+    .then(() => console.log("Service Worker registered"))
+    .catch(err => console.log("SW failed", err));
+}
+</script>
 
 <body>
 
